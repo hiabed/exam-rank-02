@@ -31,12 +31,26 @@ int chars_in_word(char *s, int i)
     return wc;
 }
 
+char ** allocate_for_array(char **s)
+{
+    char **s = malloc(count_words(&s) * sizeof(char *) + 1);
+    if(!s)
+        return NULL;
+}
+
 char **ft_split(char *str)
 {
-    int i = 0;
-    int j = 0;
+    int i;
+    int j;
     int l;
-    char **s_array = malloc(count_words(str) * sizeof(char *) + 1);
+    i = 0;
+    j = 0;
+    // char **s_array = malloc(count_words(str) * sizeof(char *) + 1);
+    // if(!s_array)
+    //     return NULL;
+    char **s_array;
+    allocate_for_array(s_array);
+    
     while(str[i])
     {
         while(str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
@@ -45,6 +59,8 @@ char **ft_split(char *str)
         if(str[i])
         {
             s_array[j] = malloc(chars_in_word(str, i) + 1);
+            if(!s_array[j])
+                return NULL;
             while(str[i] && (str[i] != ' ' && str[i] != '\t' && str[i] != '\n'))
                 s_array[j][l++] = str[i++]; 
             s_array[j][l] = '\0';
