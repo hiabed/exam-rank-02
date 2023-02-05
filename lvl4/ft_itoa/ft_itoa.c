@@ -41,13 +41,7 @@ char	*ft_itoa(int nbr)
         nbr = nbr * -1;
         s[i] = '-';
         i++;
-        while(i < len_condition)
-        {        //3  / 1 ==> 3 + 48 = '2';
-            s[i] = (nbr / power_of_ten(len - 2)) + '0';
-            nbr = nbr % power_of_ten(len - 2);    //23 % 10 => 23;
-            len--;
-            i++;
-        }
+        len--;
     }
     while(i < len_condition)
     {
@@ -61,7 +55,7 @@ char	*ft_itoa(int nbr)
 
 // int main()
 // {
-//     printf("ft_itoa => %s\n", ft_itoa(2));
+//     printf("ft_itoa => %s\n", ft_itoa(-254));
 //     printf("10 pow of 2: %d\n", power_of_ten(2));
 //     printf("num len => %d", num_len(0));
 //     return 0;
