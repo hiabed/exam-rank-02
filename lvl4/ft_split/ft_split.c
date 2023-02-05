@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 
 int count_words(char *s)
 {
@@ -30,22 +31,22 @@ int chars_in_word(char *s, int i)
     return wc;
 }
 
-char **ft_split(char *s)
+char **ft_split(char *str)
 {
     int i = 0;
     int j = 0;
     int l;
-    char **s_array = malloc(count_words(s) * sizeof(char *) + 1);
-    while(s[i])
+    char **s_array = malloc(count_words(str) * sizeof(char *) + 1);
+    while(str[i])
     {
-        while(s[i] && (s[i] == ' ' || s[i] == '\t' || s[i] == '\n'))
+        while(str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
             i++;
         l = 0;
-        if(s[i])
+        if(str[i])
         {
-            s_array[j] = malloc(chars_in_word(s, i) + 1);
-            while(s[i] && (s[i] != ' ' && s[i] != '\t' && s[i] != '\n'))
-                s_array[j][l++] = s[i++]; 
+            s_array[j] = malloc(chars_in_word(str, i) + 1);
+            while(str[i] && (str[i] != ' ' && str[i] != '\t' && str[i] != '\n'))
+                s_array[j][l++] = str[i++]; 
             s_array[j][l] = '\0';
             j++;
         }
@@ -62,6 +63,6 @@ int main()
     // char *s = " hello worldd                   !";
     // printf("%d", chars_in_word(s, 1));
 
-    char *s = "            hello       worldd        fghfhfgh        fghfghfgh   fghfghfgh   hfghfghfgh     fhfghfghfh                ";
-    printf("%s", ft_split(s)[7]);
+    char *s = "            hello       worldd                       ";
+    printf("%s", ft_split(s)[0]);
 }
