@@ -31,26 +31,14 @@ int chars_in_word(char *s, int i)
     return wc;
 }
 
-char ** allocate_for_array(char **s)
-{
-    char **s = malloc(count_words(&s) * sizeof(char *) + 1);
-    if(!s)
-        return NULL;
-}
-
 char **ft_split(char *str)
 {
-    int i;
-    int j;
+    int i = 0;
+    int j = 0;
     int l;
-    i = 0;
-    j = 0;
-    // char **s_array = malloc(count_words(str) * sizeof(char *) + 1);
-    // if(!s_array)
-    //     return NULL;
-    char **s_array;
-    allocate_for_array(s_array);
-    
+    char **s_array = malloc(count_words(str) * sizeof(char *) + 1);
+    if(!s_array)
+        return NULL;
     while(str[i])
     {
         while(str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
@@ -80,5 +68,5 @@ int main()
     // printf("%d", chars_in_word(s, 1));
 
     char *s = "            hello       worldd                       ";
-    printf("%s", ft_split(s)[0]);
+    printf("%s", ft_split(s)[2]);
 }
