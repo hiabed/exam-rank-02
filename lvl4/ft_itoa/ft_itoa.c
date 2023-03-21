@@ -27,7 +27,6 @@ int power_of_ten(int n)
         i++;
     }
     return d;
-
 }
 
 char	*ft_itoa(int nbr)
